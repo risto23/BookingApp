@@ -14,6 +14,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // // LIST CALL DARI MENU
 import Menu_Awal from './component/Menu_Awal';
+import PanZoom from './component/PanZoom';
+import Detail_Booking from './component/Detail_Booking';
 // import Menu_Utama from './component/Menu_Utama';
 // import Menu_Layanan_24_Jam from './component/Layanan_24_Jam/Menu_Layanan_24_Jam.js';
 // import Menu_Lokasi_Claim from './component/Lokasi_Claim/Menu_Lokasi_Claim.js';
@@ -70,6 +72,9 @@ export default function app() {
             initialRouteName="Menu_Awal"
           >
           <Stack.Screen name="Menu_Awal" component={Menu_Awal} />
+          <Stack.Screen name="PanZoom" component={PanZoom} />
+          <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
+          
 
           </Stack.Navigator>
 

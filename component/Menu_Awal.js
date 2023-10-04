@@ -85,12 +85,12 @@ export default main_program = ({ navigation }) => {
                     {/* <Text style={styles.tulisan1}> {item.kode_part} </Text> */}
                     {/* <Text style={styles.tulisan2}>{item.url_gambar}</Text> */}
 
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         activeOpacity={0.3}
                         style={{ marginRight: 5 }}
                         onPress={() => {
                             // navigation.navigate("PanZoom", {
-                            //     link: item.FILE_NAME,
+                            //     link: item.url,
                             //     sumber: 'db'
                             //     // sumber: 'db',
                             //     // nama_foto : item.nama_foto,
@@ -98,7 +98,7 @@ export default main_program = ({ navigation }) => {
                             // })
                             console.log('ssss')
                         }}
-                    >
+                    > */}
                         <Image
                             source={{
                                 uri: item.thumbnail,
@@ -107,7 +107,7 @@ export default main_program = ({ navigation }) => {
                         />
 
 
-                    </TouchableOpacity>
+                    {/* </TouchableOpacity> */}
 
                 </ScrollView>
            
@@ -120,63 +120,71 @@ export default main_program = ({ navigation }) => {
     )
 
 
-    show_fasilitas = () =>
-    {
-        let i = 0;
-        // console.log(a)
-        let panjang = hotel_fasilitas.length
-        console.log('pan :'+panjang)
-        for(i=0;i<panjang;i++)
-        {
-            return(
-                <View>
-                    <Text style={{ fontSize: 12, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{hotel_fasilitas[i]}</Text>
-                </View>
-            )
-        }
-    }
+   
 
     
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1 }}>
-            <Text>Halllooooo</Text>
+            <View style={{justifyContent: 'center', alignItems:'center'}}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Pesanan Saya</Text>
+            </View>
             <View>
-                <Card containerStyle={{ width: "100%", marginLeft: 0, backgroundColor: 'white' }} wrapperStyle={{}}>
-                <View>
-                        <FlatList
-                            horizontal={true}
-                            data={json_hotel_detail.images}
-                            // ItemSeparatorComponent = {FlatListItemSeparator}
-                            renderItem={renderItem}
-                        // ListEmptyComponent={EmptyListMessage}
-                        />
-                </View>
-                <View>
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_detail.hotel_name}</Text>
-                </View>
-                <View>
-                        <Text style={{ fontSize: 12, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_detail.address}</Text>
-                </View>
-                <View style={{flexDirection:'row'}}>
-                    <ScrollView horizontal={true}>
-                        {hotel_fasilitas.map((item) =>
-                                <View style={{marginRight:5,borderWidth:1,borderRadius:10,backgroundColor:'grey'}}>
-                                    <View style={{padding:5}}>
-                                        <Text style={{ fontSize: 12, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{item}</Text>
+                <TouchableOpacity
+                    activeOpacity={0.3}
+                    style={{ marginRight: 5 }}
+                    onPress={() => {
+                        navigation.navigate("Detail_Booking", {
+                        'data_hotel_room' : json_hotel_room, 
+                        'data_hotel_detail' : json_hotel_detail ,  
+                        'data_hotel_param' : json_hotel_param ,   
+                        'data_hotel_price' : json_hotel_price ,   
+                        'data_hotel_expired' : hotel_expired ,      
+                        'data_hotel_fasilitas' : hotel_fasilitas,     
+                            
+                        })
+                        console.log('ssss')
+                    }}
+                >
+
+                    <Card containerStyle={{ width: "100%", marginLeft: 0, backgroundColor: 'white' }} wrapperStyle={{}}>
+                        <View>
+                            <FlatList
+                                horizontal={true}
+                                data={json_hotel_detail.images}
+                                // ItemSeparatorComponent = {FlatListItemSeparator}
+                                renderItem={renderItem}
+                            // ListEmptyComponent={EmptyListMessage}
+                            />
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_detail.hotel_name}</Text>
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 12, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_detail.address}</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <ScrollView horizontal={true}>
+                                {hotel_fasilitas.map((item) =>
+                                    <View style={{ marginRight: 5, borderWidth: 1, borderRadius: 10, backgroundColor: '#e8e8e8' }}>
+                                        <View style={{ padding: 5 }}>
+                                            <Text style={{ fontSize: 12, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{item}</Text>
+                                        </View>
                                     </View>
-                                </View>
-                        )}
-                    </ScrollView>
+                                )}
+                            </ScrollView>
 
-                </View>
+                        </View>
 
-                <View>
-                        {/* <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_price.price_detail.currency} {json_hotel_price.price_detail.total}</Text> */}
-                </View>
-                    
-                    
-                </Card>
+                        <View>
+                            {/* <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_price.price_detail.currency} {json_hotel_price.price_detail.total}</Text> */}
+                        </View>
+
+
+                    </Card>
+                </TouchableOpacity>
+
+                
             </View>
         </SafeAreaView>
     );
