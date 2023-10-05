@@ -9,13 +9,15 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// import { Provider, useDispatch, useSelector } from 'react-redux';
-// import configureStore from './store/configureStore';
+import { Provider } from 'react-redux'
+import store from './redux/store';
+
 
 // // LIST CALL DARI MENU
 import Menu_Awal from './component/Menu_Awal';
 import PanZoom from './component/PanZoom';
 import Detail_Booking from './component/Detail_Booking';
+import Add_Data from './component/Add_Data';
 // import Menu_Utama from './component/Menu_Utama';
 // import Menu_Layanan_24_Jam from './component/Layanan_24_Jam/Menu_Layanan_24_Jam.js';
 // import Menu_Lokasi_Claim from './component/Lokasi_Claim/Menu_Lokasi_Claim.js';
@@ -64,6 +66,8 @@ export default function app() {
   else {
     const Stack = createNativeStackNavigator();
     return (
+      <Provider store={store}>
+        
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -73,14 +77,16 @@ export default function app() {
           >
           <Stack.Screen name="Menu_Awal" component={Menu_Awal} />
           <Stack.Screen name="PanZoom" component={PanZoom} />
-          <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
-          
+            <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
+            <Stack.Screen name="Add_Data" component={Add_Data} />
+            
 
           </Stack.Navigator>
 
           {/* <Request_Permission_Location /> */}
         </NavigationContainer>
-   
+
+      </Provider>
     );
   }
 }

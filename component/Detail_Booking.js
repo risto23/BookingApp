@@ -17,9 +17,13 @@ import {
     FlatList
 } from 'react-native';
 import axios from 'axios';
+import { Button } from '@rneui/themed';
 import { Card } from "@rneui/base";
 import { faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useSelector } from 'react-redux';
+import {  useIsFocused } from '@react-navigation/native';
+
 
 
 
@@ -38,13 +42,15 @@ export default main_program = ({ navigation,route }) => {
     let [data_hotel_expired, setdata_hotel_expired] = useState(route.params.data_hotel_expired);
     let [data_hotel_fasilitas, setdata_hotel_fasilitas] = useState(route.params.data_hotel_fasilitas);
 
+    const data_pemesan = useSelector(state => state.reducer_pemesan);
+    const data_tamu = useSelector(state => state.reducer_tamu);
 
-    let [data_pemesan, setdata_pemesan] = useState([
-        { gelar: 'Mr', nama: 'ccc', email: 't@m.c', telp: '453' }
-    ]);
-    let [data_tamu, setdata_tamu] = useState([
-        { gelar: 'Mr', nama: 'aaa', email: 't@m.c', telp: '00430' }, { gelar: 'Mrs', nama: 'bbb', email: 't@s.c', telp: '2334' }
-    ]);
+    // let [data_pemesan, setdata_pemesan] = useState([
+    //     { gelar: 'Mr', nama: 'ccc', email: 't@m.c', telp: '453' }
+    // ]);
+    // let [data_tamu, setdata_tamu] = useState([
+       
+    // ]);
     // 'data_hotel_room' : data_hotel_room,
     // 'data_hotel_detail' : data_hotel_detail,
     // 'data_hotel_param' : data_hotel_param,
@@ -67,17 +73,25 @@ export default main_program = ({ navigation,route }) => {
     //     });
 
 
-    useEffect(async () => {
-    //    let a= []
-    //     a = []
-    //     setdata_tamu(data_tamu => [...data_tamu,a]);
-    //     let b = new Array()
-    //     b = []
-    //     setdata_pemesan([...data_pemesan, b]);
+    // useEffect(async () => {
+    // //    let a= []
+    // //     a = []
+    // //     setdata_tamu(data_tamu => [...data_tamu,a]);
+    // //     let b = new Array()
+    // //     b = []
+    // //     setdata_pemesan([...data_pemesan, b]);
 
-        console.log(data_pemesan)
+    //     console.log(data_tamu)
        
-    }, [])
+    // }, [data_tamu])
+
+
+    // tess = () => {
+    //     console.log(data_tamu)
+    // }
+
+    // const isFocused = useIsFocused();
+    // useEffect(() => { isFocused && tess() }, [isFocused]);
 
    
 
@@ -150,15 +164,13 @@ export default main_program = ({ navigation,route }) => {
                 <View>
                     <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, marginLeft: 5, color: '#000000' }}>Detail Pemesan</Text>
                     <View style={{ marginLeft: 10 }}>
-                        {data_pemesan.map((item) => {
-                            return (
                                 <View>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, marginLeft: 5, color: '#000000' }}>{item.gelar} {item.nama}</Text>
-                                    <Text style={{ fontSize: 11, marginLeft: 5, color: '#a7a9ab' }}>{item.email}</Text>
-                                    <Text style={{ fontSize: 12, marginLeft: 5, color: '#a7a9ab' }}>{item.telp}</Text>
+                            <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, marginLeft: 5, color: '#000000' }}>{data_pemesan.gelar} {data_pemesan.nama}</Text>
+                            <Text style={{ fontSize: 11, marginLeft: 5, color: '#a7a9ab' }}>{data_pemesan.email}</Text>
+                            <Text style={{ fontSize: 12, marginLeft: 5, color: '#a7a9ab' }}>{data_pemesan.telp}</Text>
                                 </View>
-                            )
-                        })}
+                            
+                        
                     </View>
 
                 </View>
@@ -166,16 +178,14 @@ export default main_program = ({ navigation,route }) => {
                 <View>
                     <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, marginLeft: 5, color: '#000000' }}>Data Tamu</Text>
                     <View style={{ marginLeft: 10, marginTop: 10 }}>
-                        {data_tamu.map((item) => {
+                        {data_tamu.data_tamu.map((item) => {
                             return (
                                 <View style={{ flexDirection: 'row', marginBottom: 5 }}>
                                     <View style={{ flex: 1 }}>
                                         <FontAwesomeIcon
-                                            // size={24} color={'rgba(67, 37, 119,0.7)'}
                                             size={20}
                                             color={'#000000'}
                                             icon={faUser}
-                                        // style={styles.homeicon3}
                                         />
 
                                     </View>
@@ -186,6 +196,46 @@ export default main_program = ({ navigation,route }) => {
                                 </View>
                             )
                         })}
+                    </View>
+
+                    <View>
+                        <Button
+                            title="Add Data"
+                            buttonStyle={{
+                                backgroundColor: 'rgba(0, 230, 4, 0.86)',
+                                borderRadius: 5,
+                            }}
+                            titleStyle={{ fontWeight: 'bold', fontSize: 14 }}
+                            containerStyle={{
+                                // marginHorizontal: 50,
+                                height: 50,
+                                width: '70%',
+                                // marginVertical: 10,
+                            }}
+                            // onPress={() =>Alert.alert(
+                            //     'CONFIRMATION',
+                            //     'Apakah anda yakin?',
+                            //     [
+                            //     {
+                            //         text: 'OK',
+                            //         onPress: () => {
+                            //             tombol_reject()
+
+                            //         }
+                            //     },
+                            //     {
+                            //         text: 'CANCEL',
+                            //     },
+                            //     ],
+
+                            //     {
+                            //     cancelable: true
+                            //     }
+                            //     )
+
+                            //     }
+                            onPress={() => navigation.navigate('Add_Data')}
+                        /> 
                     </View>
 
                 </View>
