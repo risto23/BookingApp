@@ -16,6 +16,7 @@ import {
     Linking,
     FlatList
 } from 'react-native';
+import { Button } from '@rneui/themed';
 import { useSelector, useDispatch } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Judul_atas from './Header.js';
@@ -32,15 +33,16 @@ const imageWidth = dimensions.width;
 export default main_program = ({ navigation, route }) => {
     //VARIABEL AWAL
 
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const data_pemesan = useSelector(state => state.reducer_pemesan);
     const data_tamu = useSelector(state => state.reducer_tamu);
 
 
-    let [gelar, setgelar] = useState("");
-    let [nama, setnama] = useState("");
-    let [email, setemail] = useState("");
-    let [telp, settelp] = useState("");
+    let [gelar, setgelar] = useState(route.params.gelar);
+    let [nama, setnama] = useState(route.params.nama);
+    let [email, setemail] = useState(route.params.email);
+    let [telp, settelp] = useState(route.params.telp);
+    let [index, setindex] = useState(route.params.index);
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -52,13 +54,11 @@ export default main_program = ({ navigation, route }) => {
 
     const [selectedId, setSelectedId] = useState();
 
-   
 
 
-    add_data = () => {
+    edit_data = () => {
 
         const dataArray = [];
-
         let pemesan = {}
 
         pemesan.nama = nama,
@@ -66,8 +66,7 @@ export default main_program = ({ navigation, route }) => {
         pemesan.telp = telp,
         pemesan.email = email
         dataArray.push(pemesan);
-        dispatch({ type: 'ADD_ORANG', inputValue: pemesan })
-
+        dispatch({ type: 'EDIT_DATA_SUCCESS', inputValue: pemesan,indeks: index })
         navigation.goBack();
     }
 
@@ -80,8 +79,7 @@ export default main_program = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1, backgroundColor: 'white' }}>
-            <Judul_atas judul_menu={'Add Data'} ></Judul_atas>
-
+            <Judul_atas judul_menu={'Edita Data'} ></Judul_atas>
             <View style={{ marginLeft: 10 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Detail Pesanan</Text>
@@ -89,10 +87,10 @@ export default main_program = ({ navigation, route }) => {
 
                 <View>
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={{flex:1}}>
+                        <View style={{ flex: 1 }}>
                             <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10, color: '#000000' }}>Gelar</Text>
                         </View>
-                        <View style={{ flex: 3 ,marginLeft: 5}}>
+                        <View style={{ flex: 3, marginLeft: 5 }}>
                             <DropDownPicker
                                 open={open}
                                 value={gelar}
@@ -149,7 +147,7 @@ export default main_program = ({ navigation, route }) => {
                         <View style={{ flex: 3 }}>
                             <TextInput
                                 value={telp}
-                                keyboardType ={'number-pad'}
+                                keyboardType={'number-pad'}
                                 style={{
                                     borderBottomColor: '#000000',
                                     borderBottomWidth: 1, color: 'black', fontSize: 12,
@@ -161,11 +159,11 @@ export default main_program = ({ navigation, route }) => {
                         </View>
                     </View>
 
-                    <View style={{marginTop: 10}}>
+                    <View style={{ marginTop: 10 }}>
                         <Button
-                            title="Add Data"
+                            title="Edit Data"
                             buttonStyle={{
-                                backgroundColor: 'rgba(0, 230, 4, 0.86)',
+                                backgroundColor: 'rgba(0, 133, 217, 1)',
                                 borderRadius: 5,
                             }}
                             titleStyle={{ fontWeight: 'bold', fontSize: 14 }}
@@ -174,30 +172,30 @@ export default main_program = ({ navigation, route }) => {
                                 height: 50,
                                 // marginVertical: 10,
                             }}
-                            // onPress={() =>Alert.alert(
-                            //     'CONFIRMATION',
-                            //     'Apakah anda yakin?',
-                            //     [
-                            //     {
-                            //         text: 'OK',
-                            //         onPress: () => {
-                            //             tombol_reject()
+                            onPress={() =>Alert.alert(
+                                'CONFIRMATION',
+                                'Apakah anda yakin?',
+                                [
+                                {
+                                    text: 'OK',
+                                    onPress: () => {
+                                        edit_data()
 
-                            //         }
-                            //     },
-                            //     {
-                            //         text: 'CANCEL',
-                            //     },
-                            //     ],
+                                    }
+                                },
+                                {
+                                    text: 'CANCEL',
+                                },
+                                ],
 
-                            //     {
-                            //     cancelable: true
-                            //     }
-                            //     )
+                                {
+                                cancelable: true
+                                }
+                                )
 
-                            //     }
-                            onPress={() => add_data()}
-                        /> 
+                                }
+                            // onPress={() => edit_data()}
+                        />
                     </View>
                 </View>
 

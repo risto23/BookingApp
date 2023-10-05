@@ -18,28 +18,7 @@ import Menu_Awal from './component/Menu_Awal';
 import PanZoom from './component/PanZoom';
 import Detail_Booking from './component/Detail_Booking';
 import Add_Data from './component/Add_Data';
-// import Menu_Utama from './component/Menu_Utama';
-// import Menu_Layanan_24_Jam from './component/Layanan_24_Jam/Menu_Layanan_24_Jam.js';
-// import Menu_Lokasi_Claim from './component/Lokasi_Claim/Menu_Lokasi_Claim.js';
-// import Menu_Bengkel_Rekanan from './component/Bengkel_Rekanan/Menu_Bengkel_Rekanan.js';
-// import Menu_Pengajuan_Klaim from './component/Pengajuan_Klaim/Menu_Pengajuan_Klaim';
-// import Menu_Detail_Polis from './component/Detail_Polis/Menu_Detail_Polis';
-// import Menu_Lonceng_Info from './component/Lonceng_Informasi/Menu_Lonceng_Info';
-// import Menu_Promo from './component/Promo/Menu_Promo';
-// import Status_Klaim from './component/Riwayat/Klaim/Status_Klaim';
-// import Menu_Simulasi_Premi from './component/Simulasi_Premi/Menu_Simulasi_Premi';
-// import Menu_Simulasi_Motor from './component/Simulasi_Premi/Motor/Menu_Simulasi_Motor';
-// import Menu_Simulasi_Mobil from './component/Simulasi_Premi/Mobil/Menu_Simulasi_Mobil';
-// import WebView_Fire from './component/Simulasi_Premi/Kebakaran/WebView_Fire';
-// import Menu_Bantuan_Derek from './component/Bantuan_Derek/Menu_Bantuan_Derek';
-// import Request_Permission_Location from './component/reuse/Request_Permission_Location';
-// import PanZoom from './component/reuse/PanZoom';
-
-// // sub Menu Polis Saya
-// import Rincian_Polis_Saya from './component/Polis_Saya/Rincian_Polis/Rincian_Polis.js';
-// import Tambah_Polis_ke_Apps from './component/Tambah_Polis/Menu_Tambah_Polis.js';
-// // sub Menu Lokasi Claim
-// import Detail_Lokasi_Claim from './component/Lokasi_Claim/Detail_Lokasi_Claim.js';
+import Edit_Data from './component/Edit_Data';
 
 
 //autoresize gambar
@@ -48,13 +27,13 @@ const splash_width = dimensions.width;
 const splash_height = dimensions.height;
 
 export default function app() {
-  const [isloading, setloading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setloading(!isloading)
-    }, 2000);
-    // setloading(!isloading)
-  }, [])
+  const [isloading, setloading] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setloading(!isloading)
+  //   }, 2000);
+  //   // setloading(!isloading)
+  // }, [])
 
   if (isloading) {
     return (
@@ -79,6 +58,7 @@ export default function app() {
           <Stack.Screen name="PanZoom" component={PanZoom} />
             <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
             <Stack.Screen name="Add_Data" component={Add_Data} />
+            <Stack.Screen name="Edit_Data" component={Edit_Data} />
             
 
           </Stack.Navigator>

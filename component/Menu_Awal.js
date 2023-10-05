@@ -18,6 +18,8 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import { Card } from "@rneui/base";
+import Judul_atas from './Header_Menu.js';
+
 
 
 //autoresize gambar
@@ -80,43 +82,15 @@ export default main_program = ({ navigation }) => {
 
     renderItem = ({ item }) => (
         <View style={{ marginLeft: 5 }}>
-            
                 <ScrollView horizontal={true}>
-                    {/* <Text style={styles.tulisan1}> {item.kode_part} </Text> */}
-                    {/* <Text style={styles.tulisan2}>{item.url_gambar}</Text> */}
-
-                    {/* <TouchableOpacity
-                        activeOpacity={0.3}
-                        style={{ marginRight: 5 }}
-                        onPress={() => {
-                            // navigation.navigate("PanZoom", {
-                            //     link: item.url,
-                            //     sumber: 'db'
-                            //     // sumber: 'db',
-                            //     // nama_foto : item.nama_foto,
-                            //     // row_id_foto : item.row_id
-                            // })
-                            console.log('ssss')
-                        }}
-                    > */}
                         <Image
                             source={{
                                 uri: item.thumbnail,
                             }}
                             style={{ marginTop: 20, marginBottom: 10, width: 100, height: 100 }}
                         />
-
-
-                    {/* </TouchableOpacity> */}
-
                 </ScrollView>
-           
         </View>
-
-
-
-
-
     )
 
 
@@ -126,6 +100,8 @@ export default main_program = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1 }}>
+            <Judul_atas judul_menu={'Menu Awal'} ></Judul_atas>
+
             <View style={{justifyContent: 'center', alignItems:'center'}}>
                 <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Pesanan Saya</Text>
             </View>
@@ -176,9 +152,6 @@ export default main_program = ({ navigation }) => {
 
                         </View>
 
-                        <View>
-                            {/* <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>{json_hotel_price.price_detail.currency} {json_hotel_price.price_detail.total}</Text> */}
-                        </View>
 
 
                     </Card>
