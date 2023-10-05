@@ -1,38 +1,23 @@
-import React, { Component, useEffect, useState, version } from 'react'
+import React, { useState } from 'react'
 import {
-    ScrollView,
     View,
     Text,
     Alert,
-    TouchableOpacity,
     Image,
-    Dimensions,
-    ImageBackground,
-    PermissionsAndroid,
-    LogBox,
-    SafeAreaView,
-    TextInput,
-    Modal,
-    Linking,
-    FlatList
+    SafeAreaView
 } from 'react-native';
-import axios from 'axios';
 import { Button } from '@rneui/themed';
 import { Card } from "@rneui/base";
 import { faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
-import {  useIsFocused } from '@react-navigation/native';
 
 import Judul_atas from './Header.js';
 
 
 
 
-//autoresize gambar
-const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 9 / 18);
-const imageWidth = dimensions.width;
+
 
 export default main_program = ({ navigation,route }) => {
     //VARIABEL AWAL
@@ -52,9 +37,11 @@ export default main_program = ({ navigation,route }) => {
 
     delete_data = (indeks) => {
 
+        let angka = indeks - 1
+
         
 
-        dispatch({ type: 'DELETE_DATA', indeks: indeks })
+        dispatch({ type: 'DELETE_DATA', indeks: angka })
     }
    
 

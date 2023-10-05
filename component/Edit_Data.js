@@ -1,23 +1,14 @@
-import React, { Component, useEffect, useState, version, useMemo } from 'react'
+import React, {  useState } from 'react'
 import {
-    ScrollView,
     View,
     Text,
     Alert,
-    TouchableOpacity,
-    Image,
     Dimensions,
-    ImageBackground,
-    PermissionsAndroid,
-    LogBox,
     SafeAreaView,
     TextInput,
-    Modal,
-    Linking,
-    FlatList
 } from 'react-native';
 import { Button } from '@rneui/themed';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Judul_atas from './Header.js';
 
@@ -25,17 +16,10 @@ import Judul_atas from './Header.js';
 
 
 
-//autoresize gambar
-const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 9 / 18);
-const imageWidth = dimensions.width;
-
 export default main_program = ({ navigation, route }) => {
     //VARIABEL AWAL
 
     const dispatch = useDispatch();
-    const data_pemesan = useSelector(state => state.reducer_pemesan);
-    const data_tamu = useSelector(state => state.reducer_tamu);
 
 
     let [gelar, setgelar] = useState(route.params.gelar);
@@ -58,16 +42,22 @@ export default main_program = ({ navigation, route }) => {
 
     edit_data = () => {
 
-        const dataArray = [];
-        let pemesan = {}
 
-        pemesan.nama = nama,
-        pemesan.gelar = gelar,
-        pemesan.telp = telp,
-        pemesan.email = email
-        dataArray.push(pemesan);
-        dispatch({ type: 'EDIT_DATA_SUCCESS', inputValue: pemesan,indeks: index })
-        navigation.goBack();
+        if(nama != '' && gelar != '' && telp != '' && email != '')
+        {
+            const dataArray = [];
+            let pemesan = {}
+
+            pemesan.nama = nama,
+                pemesan.gelar = gelar,
+                pemesan.telp = telp,
+                pemesan.email = email
+            dataArray.push(pemesan);
+            dispatch({ type: 'EDIT_DATA_SUCCESS', inputValue: pemesan, indeks: index })
+            navigation.goBack();
+        }
+
+        
     }
 
 

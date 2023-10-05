@@ -1,35 +1,23 @@
-import React, { Component, useEffect, useState, version, useMemo } from 'react'
+import React, {  useState } from 'react'
 import {
-    ScrollView,
     View,
     Text,
-    Alert,
-    TouchableOpacity,
-    Image,
     Dimensions,
-    ImageBackground,
-    PermissionsAndroid,
-    LogBox,
     SafeAreaView,
     TextInput,
-    Modal,
-    Linking,
-    FlatList
+    Alert
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Judul_atas from './Header.js';
+import { Button } from '@rneui/themed';
 
 
 
 
 
-//autoresize gambar
-const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 9 / 18);
-const imageWidth = dimensions.width;
 
-export default main_program = ({ navigation, route }) => {
+export default main_program = ({ navigation }) => {
     //VARIABEL AWAL
 
      const dispatch = useDispatch();
@@ -57,24 +45,28 @@ export default main_program = ({ navigation, route }) => {
 
     add_data = () => {
 
-        const dataArray = [];
+        if (nama != '' && gelar != '' && telp != '' && email != '')
+        {
+            const dataArray = [];
 
-        let pemesan = {}
+            let pemesan = {}
 
-        pemesan.nama = nama,
-        pemesan.gelar = gelar,
-        pemesan.telp = telp,
-        pemesan.email = email
-        dataArray.push(pemesan);
-        dispatch({ type: 'ADD_ORANG', inputValue: pemesan })
+            pemesan.nama = nama,
+                pemesan.gelar = gelar,
+                pemesan.telp = telp,
+                pemesan.email = email
+            dataArray.push(pemesan);
+            dispatch({ type: 'ADD_ORANG', inputValue: pemesan })
 
-        navigation.goBack();
+            navigation.goBack();
+        }
+        else
+        {
+            Alert.alert("Warning","Ada Data yang kosong")
+        }
+
+       
     }
-
-
-
-
-
 
 
 
@@ -174,29 +166,29 @@ export default main_program = ({ navigation, route }) => {
                                 height: 50,
                                 // marginVertical: 10,
                             }}
-                            // onPress={() =>Alert.alert(
-                            //     'CONFIRMATION',
-                            //     'Apakah anda yakin?',
-                            //     [
-                            //     {
-                            //         text: 'OK',
-                            //         onPress: () => {
-                            //             tombol_reject()
+                            onPress={() =>Alert.alert(
+                                'CONFIRMATION',
+                                'Apakah anda yakin?',
+                                [
+                                {
+                                    text: 'OK',
+                                    onPress: () => {
+                                        add_data()
 
-                            //         }
-                            //     },
-                            //     {
-                            //         text: 'CANCEL',
-                            //     },
-                            //     ],
+                                    }
+                                },
+                                {
+                                    text: 'CANCEL',
+                                },
+                                ],
 
-                            //     {
-                            //     cancelable: true
-                            //     }
-                            //     )
+                                {
+                                cancelable: true
+                                }
+                                )
 
-                            //     }
-                            onPress={() => add_data()}
+                                }
+                            // onPress={() => add_data()}
                         /> 
                     </View>
                 </View>

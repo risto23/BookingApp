@@ -1,8 +1,7 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  Image,
   Dimensions,
   Text
 } from 'react-native';
@@ -28,12 +27,6 @@ const splash_height = dimensions.height;
 
 export default function app() {
   const [isloading, setloading] = useState(false);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setloading(!isloading)
-  //   }, 2000);
-  //   // setloading(!isloading)
-  // }, [])
 
   if (isloading) {
     return (
@@ -56,14 +49,13 @@ export default function app() {
           >
           <Stack.Screen name="Menu_Awal" component={Menu_Awal} />
           <Stack.Screen name="PanZoom" component={PanZoom} />
-            <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
-            <Stack.Screen name="Add_Data" component={Add_Data} />
-            <Stack.Screen name="Edit_Data" component={Edit_Data} />
+          <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
+          <Stack.Screen name="Add_Data" component={Add_Data} />
+          <Stack.Screen name="Edit_Data" component={Edit_Data} />
             
 
           </Stack.Navigator>
 
-          {/* <Request_Permission_Location /> */}
         </NavigationContainer>
 
       </Provider>

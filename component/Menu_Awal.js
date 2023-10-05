@@ -1,31 +1,17 @@
-import React, { Component, useEffect, useState, version } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     ScrollView,
     View,
     Text,
-    Alert,
     TouchableOpacity,
     Image,
-    Dimensions,
-    ImageBackground,
-    PermissionsAndroid,
-    LogBox,
     SafeAreaView,
-    TextInput,
-    Modal,
-    Linking,
     FlatList
 } from 'react-native';
 import axios from 'axios';
 import { Card } from "@rneui/base";
 import Judul_atas from './Header_Menu.js';
 
-
-
-//autoresize gambar
-const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 9 / 18);
-const imageWidth = dimensions.width;
 
 export default main_program = ({ navigation }) => {
     //VARIABEL AWAL
@@ -36,29 +22,11 @@ export default main_program = ({ navigation }) => {
     let [hotel_expired, sethotel_expired] = useState("");
     let [hotel_fasilitas, sethotel_fasilitas] = useState([]);
 
-
-
-    // contoh axios pake get
-    // axios.get(URL, { headers: { Authorization: AuthStr } })
-    //     .then(response => {
-    //         // If request is good...
-    //         console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //         console.log('error ' + error);
-    //     });
-
-
     useEffect(async () => {
         get_data();
     }, [])
 
     get_data = async () => {
-        // setloading_view(true);
-
-        // let md5pass = md5(in_pass);
-        // await generate_token_firebase();
-
         //TEMBAK API LOGIN
         await axios.get('https://parseapi.back4app.com/classes/hotel/bVonXoSUHK',
             {
@@ -128,9 +96,7 @@ export default main_program = ({ navigation }) => {
                             <FlatList
                                 horizontal={true}
                                 data={json_hotel_detail.images}
-                                // ItemSeparatorComponent = {FlatListItemSeparator}
                                 renderItem={renderItem}
-                            // ListEmptyComponent={EmptyListMessage}
                             />
                         </View>
                         <View>
