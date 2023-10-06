@@ -68,7 +68,7 @@ export default main_program = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1 }}>
-            <Judul_atas judul_menu={'Menu Awal'} ></Judul_atas>
+            <Judul_atas judul_menu={'Pesanan Saya'} ></Judul_atas>
 
             <View style={{justifyContent: 'center', alignItems:'center'}}>
                 <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Pesanan Saya</Text>

@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import {
     View,
     Text,
@@ -43,8 +43,7 @@ export default main_program = ({ navigation, route }) => {
     edit_data = () => {
 
 
-        if(nama != '' && gelar != '' && telp != '' && email != '')
-        {
+        if (nama != '' && gelar != '' && telp != '' && email != '') {
             const dataArray = [];
             let pemesan = {}
 
@@ -57,7 +56,7 @@ export default main_program = ({ navigation, route }) => {
             navigation.goBack();
         }
 
-        
+
     }
 
 
@@ -69,7 +68,7 @@ export default main_program = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1, backgroundColor: 'white' }}>
-            <Judul_atas judul_menu={'Edit Data'} ></Judul_atas>
+            <Judul_atas judul_menu={'Detail Data'} ></Judul_atas>
             <View style={{ marginLeft: 10 }}>
                 {/* <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Detail Pesanan</Text>
@@ -81,14 +80,16 @@ export default main_program = ({ navigation, route }) => {
                             <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10, color: '#000000' }}>Gelar</Text>
                         </View>
                         <View style={{ flex: 3, marginLeft: 5 }}>
-                            <DropDownPicker
-                                open={open}
+                            <TextInput
                                 value={gelar}
-                                items={items}
-                                setOpen={setOpen}
-                                setValue={setgelar}
-                                setItems={setItems}
-                                placeholder={'Gelar'}
+                                editable={false}
+                                style={{
+                                    borderBottomColor: '#000000',
+                                    borderBottomWidth: 1, color: 'black', fontSize: 12,
+                                }}
+                                onChangeText={(text) => {
+                                    setgelar(text);
+                                }}
                             />
                         </View>
                     </View>
@@ -100,6 +101,7 @@ export default main_program = ({ navigation, route }) => {
                         <View style={{ flex: 3 }}>
                             <TextInput
                                 value={nama}
+                                editable={false}
                                 style={{
                                     borderBottomColor: '#000000',
                                     borderBottomWidth: 1, color: 'black', fontSize: 12,
@@ -118,6 +120,7 @@ export default main_program = ({ navigation, route }) => {
                         <View style={{ flex: 3 }}>
                             <TextInput
                                 value={email}
+                                editable={false}
                                 inputMode={'email'}
                                 style={{
                                     borderBottomColor: '#000000',
@@ -137,6 +140,7 @@ export default main_program = ({ navigation, route }) => {
                         <View style={{ flex: 3 }}>
                             <TextInput
                                 value={telp}
+                                editable={false}
                                 keyboardType={'number-pad'}
                                 style={{
                                     borderBottomColor: '#000000',
@@ -149,44 +153,7 @@ export default main_program = ({ navigation, route }) => {
                         </View>
                     </View>
 
-                    <View style={{ marginTop: 10 }}>
-                        <Button
-                            title="Edit Data"
-                            buttonStyle={{
-                                backgroundColor: 'rgba(0, 133, 217, 1)',
-                                borderRadius: 5,
-                            }}
-                            titleStyle={{ fontWeight: 'bold', fontSize: 14 }}
-                            containerStyle={{
-                                // marginHorizontal: 50,
-                                height: 50,
-                                // marginVertical: 10,
-                            }}
-                            onPress={() =>Alert.alert(
-                                'CONFIRMATION',
-                                'Apakah anda yakin?',
-                                [
-                                {
-                                    text: 'OK',
-                                    onPress: () => {
-                                        edit_data()
-
-                                    }
-                                },
-                                {
-                                    text: 'CANCEL',
-                                },
-                                ],
-
-                                {
-                                cancelable: true
-                                }
-                                )
-
-                                }
-                            // onPress={() => edit_data()}
-                        />
-                    </View>
+                    
                 </View>
 
             </View>

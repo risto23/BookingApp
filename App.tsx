@@ -18,6 +18,7 @@ import PanZoom from './component/PanZoom';
 import Detail_Booking from './component/Detail_Booking';
 import Add_Data from './component/Add_Data';
 import Edit_Data from './component/Edit_Data';
+import Detail_Data from './component/Detail_Data';
 
 
 //autoresize gambar
@@ -51,7 +52,8 @@ export default function app() {
           <Stack.Screen name="PanZoom" component={PanZoom} />
           <Stack.Screen name="Detail_Booking" component={Detail_Booking} />
           <Stack.Screen name="Add_Data" component={Add_Data} />
-          <Stack.Screen name="Edit_Data" component={Edit_Data} />
+            <Stack.Screen name="Edit_Data" component={Edit_Data} />
+            <Stack.Screen name="Detail_Data" component={Detail_Data} />
             
 
           </Stack.Navigator>

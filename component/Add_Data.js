@@ -72,12 +72,12 @@ export default main_program = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flexDirection: 'column', flex: 1, backgroundColor: 'white' }}>
-            <Judul_atas judul_menu={'Add Data'} ></Judul_atas>
+            <Judul_atas judul_menu={'Tambah Tamu'} ></Judul_atas>
 
             <View style={{ marginLeft: 10 }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Detail Pesanan</Text>
-                </View>
+                {/* <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 5, color: '#000000' }}>Tambah Tamu</Text>
+                </View> */}
 
                 <View>
                     <View style={{ flexDirection: 'row' }}>

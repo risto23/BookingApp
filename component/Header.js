@@ -4,6 +4,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Header, Icon } from "@rneui/base";
+import { faArrowCircleLeft, faBackspace, faBackward, faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 import { useNavigation } from '@react-navigation/native';
 
 export default Header2 = ({ judul_menu }) => {
@@ -31,7 +34,13 @@ export default Header2 = ({ judul_menu }) => {
                         onPress={() => this.Beranda()}
                     >
 
-                        <Icon name="arrow-back" color="white" />
+                        <FontAwesomeIcon
+                            // size={24} color={'rgba(67, 37, 119,0.7)'}
+                            size={40}
+                            color={'#fff'}
+                            icon={faArrowCircleLeft}
+                        // style={styles.homeicon3}
+                        />
 
                     </TouchableOpacity>
                 </View>
